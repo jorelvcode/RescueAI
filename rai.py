@@ -8,6 +8,9 @@ import requests
 from io import BytesIO
 import re
 
+# Note: Any code in between a commented "&&&" is code I, Jorel Valera, was responsible for.
+
+# &&&
 # Set up OpenAI API key
 openai.api_key = os.environ["OPENAI_API_KEY"]
 client = OpenAI()
@@ -25,7 +28,7 @@ assistant = client.beta.assistants.create(
 
 # Create vector store + upload docs
 vector_store = client.vector_stores.create(name="911 Operator Protocol")
-
+# &&&
 pdf_urls = [
     "https://raw.githubusercontent.com/blazeshadowflame/testdeploy/main/RescueAI_Traffic_Accidents%20dialogue%20transcript.pdf",
     "https://raw.githubusercontent.com/blazeshadowflame/testdeploy/main/RescueAI_Synthetic_911_Scenarios.pdf"
@@ -38,6 +41,7 @@ for url in pdf_urls:
     filename = url.split("/")[-1]
     file_streams.append((filename, BytesIO(response.content), "application/pdf"))
 
+# &&&
 client.vector_stores.file_batches.upload_and_poll(vector_store_id=vector_store.id, files=file_streams)
 
 # Attach vector store to assistant
@@ -51,7 +55,7 @@ def assistant_chatbot(message):
     run = client.beta.threads.runs.create_and_poll(thread_id=thread.id, assistant_id=assistant.id)
     messages = list(client.beta.threads.messages.list(thread_id=thread.id, run_id=run.id))
     return messages[0].content[0].text.value
-
+# &&&
 
 def clean_recommendation(text):
     cleaned_text = re.sub(r'【.*?】', '', text)
@@ -79,7 +83,7 @@ def transcribe_audio_chunks_live(audio_path, chunk_length_ms=5000):
 
     return full_transcription.strip()
 
-
+# &&&
 def extract_keywords(text):
     response = client.chat.completions.create(
         model="gpt-4o",
@@ -93,7 +97,7 @@ def extract_keywords(text):
         ],
     )
     return response.choices[0].message.content
-
+# &&&
 
 def generate_operator_recommendation(transcription):
     prompt = f"Based on this 911 call transcription: {transcription}, recommend an immediate course of action for the operator. List 2-3 key steps."
@@ -183,6 +187,7 @@ if st.session_state.audio_processed:
 if "chat_messages" not in st.session_state:
     st.session_state.chat_messages = []
 
+# &&&
 with st.sidebar:
     st.markdown("## 🧠 Rai – 911 Assistant Chatbot")
     st.markdown(
@@ -201,4 +206,4 @@ with st.sidebar:
             clean_response = clean_recommendation(raw_response)  # 🛠️ Clean it here!
         st.session_state.chat_messages.append({"role": "assistant", "content": clean_response})
         st.rerun()
-
+# &&&
