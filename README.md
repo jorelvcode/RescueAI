@@ -24,6 +24,10 @@ To address this problem, we created RescueAI, an AI-powered 911 operator assista
 
 RescueAI helps relieve the burden that comes with a 911 operator's job, reducing stress, minimizing errors, and promoting efficiency.
 
+Additionally, there are a few sub-features that come with the live keyword extractor: 
+- a confirmation feature, so users can make sure the output is in line with what they heard in the audio
+- AI-generated suggestions on what to do given the extracted keywords, also based on provided protocol
+
 ## Demo Video
 
 To see a demonstration of how RescueAI works, watch our demo video here: 
