@@ -29,6 +29,7 @@ assistant = client.beta.assistants.create(
 # Create vector store + upload docs
 vector_store = client.vector_stores.create(name="911 Operator Protocol")
 # &&&
+
 pdf_urls = [
     "https://raw.githubusercontent.com/blazeshadowflame/testdeploy/main/RescueAI_Traffic_Accidents%20dialogue%20transcript.pdf",
     "https://raw.githubusercontent.com/blazeshadowflame/testdeploy/main/RescueAI_Synthetic_911_Scenarios.pdf"
