@@ -33,10 +33,10 @@ To see a demonstration of how RescueAI works, watch our demo video here:
 ## Application Design
 
 RescueAI utilizes a number of items in regards to its application design:
-- The chatbot feature is meant to reference jurisdiction-specific 911 operator protocol documents for its answers. As a substitute, two synthetic protocol documents have been provided.
-- The chatbot feature is powered by OpenAI's GPT-4.
-- The keyword extraction feature is powered by OpenAI's GPT-4 and Whisper.
-- The application as a whole is written in Python and hosted on a Streamlit website.
+- The chatbot feature is meant to reference jurisdiction-specific 911 operator protocol documents for its answers. As a substitute, **two synthetic protocol documents** have been provided.
+- The chatbot feature is powered by **OpenAI's GPT-4**.
+- The keyword extraction feature is powered by **OpenAI's GPT-4 and Whisper**.
+- The application as a whole is written in Python and hosted on a **Streamlit** website.
 
 ## Ethical Design
 
